@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche de Cabinets d'Avocats</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            margin-right: 10px;
+        }
+        .search-bar button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .lawyer-list {
+            list-style: none;
+            padding: 0;
+        }
+        .lawyer-item {
+            background-color: white;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .lawyer-item h3 {
+            margin: 0 0 10px;
+        }
+        .lawyer-item .rating {
+            color: #FFD700;
+            margin-bottom: 5px;
+        }
+        .lawyer-item .price, .lawyer-item .reviews {
+            margin-bottom: 5px;
+        }
+        .instagram-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .instagram-link a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Recherche de Cabinets d'Avocats</h1>
+</header>
+
+<main>
+    <div class="search-bar">
+        <input type="text" id="location" placeholder="Entrez votre ville ou code postal">
+        <button onclick="searchLawyers()">Rechercher</button>
+    </div>
+    
+    <ul class="lawyer-list" id="lawyer-list">
+        <!-- Les résultats de la recherche apparaîtront ici -->
+    </ul>
+    
+    <div class="instagram-link">
+        <a href="https://www.instagram.com/tonprofil" target="_blank">Suivez-moi sur Instagram</a>
+    </div>
+</main>
+
+<script>
+    function searchLawyers() {
+        const location = document.getElementById('location').value;
+        const lawyerList = document.getElementById('lawyer-list');
+        
+        // Exemple de données simulées pour l'affichage
+        const lawyers = [
+            { name: "Cabinet Dupont", rating: 4.5, price: "€€", reviews: "Excellents conseils juridiques et accueil chaleureux." },
+            { name: "Cabinet Martin", rating: 4.0, price: "€€€", reviews: "Très professionnel et réactif." },
+            { name: "Cabinet Durand", rating: 3.8, price: "€", reviews: "Bon service, mais un peu cher." }
+        ];
+        
+        lawyerList.innerHTML = '';
+        lawyers.forEach(lawyer => {
+            const lawyerItem = document.createElement('li');
+            lawyerItem.className = 'lawyer-item';
+            lawyerItem.innerHTML = `
+                <h3>${lawyer.name}</h3>
+                <div class="rating">Note : ${lawyer.rating} / 5</div>
+                <div class="price">Prix : ${lawyer.price}</div>
+                <div class="reviews">Avis : ${lawyer.reviews}</div>
+            `;
+            lawyerList.appendChild(lawyerItem);
+        });
+    }
+</script>
+
+</body>
+</html>
